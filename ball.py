@@ -2,7 +2,7 @@ from turtle import Turtle
 
 
 class Ball(Turtle):
-    def __init__(self,):
+    def __init__(self):
         super().__init__()
         self.shape("circle")
         #self.shapesize(stretch_wid=1,stretch_len=1)
@@ -21,4 +21,7 @@ class Ball(Turtle):
 
     def hit(self):
         self.x = -self.x
+
+    def reset(self):
+        self.goto(0,0)
 

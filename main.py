@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from score import Score
 import time
 
 game_is_on = True
@@ -14,7 +15,7 @@ screen.tracer(0)
 rPaddle=Paddle((350,0))
 lPaddle=Paddle((-350,0))
 pongBall = Ball()
-
+scoreboard = Score()
 
 def stop():
     global game_is_on
@@ -37,6 +38,17 @@ while game_is_on:
 
     if (pongBall.distance(rPaddle) <= 60) and (pongBall.xcor() == 330) or (pongBall.distance(lPaddle) <= 60) and (pongBall.xcor() == -330):
         pongBall.hit() 
+
+    if (pongBall.xcor() == 390):
+        scoreboard.lScoreUp()
+        pongBall.reset()
+        pongBall.hit()
+    
+    if (pongBall.xcor() == -390):
+        scoreboard.rScoreUp()
+        pongBall.reset()
+        pongBall.hit()
+       
 
 
 screen.exitonclick()
