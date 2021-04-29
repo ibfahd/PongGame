@@ -29,15 +29,16 @@ screen.onkey(lPaddle.go_down,"w")
 screen.onkey(stop,"x")
 
 while game_is_on:
-    time.sleep(0.01)
+    time.sleep(pongBall.flight_speed)
     screen.update()
 
     if (pongBall.ycor() == 290) or (pongBall.ycor() == -280):
         pongBall.ricochet()
+    
     pongBall.jump()
 
     if (pongBall.distance(rPaddle) <= 60) and (pongBall.xcor() == 330) or (pongBall.distance(lPaddle) <= 60) and (pongBall.xcor() == -330):
-        pongBall.hit() 
+        pongBall.hit()
 
     if (pongBall.xcor() == 390):
         scoreboard.lScoreUp()
